@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "node lib/test.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

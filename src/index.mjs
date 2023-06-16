@@ -1,48 +1,35 @@
-import { shallowRef, watchEffect } from '../lib/index.mjs';
-import h from 'hyperscript';
-import htm from 'htm';
+import { createSignal } from '../lib/signal.mjs';
+import { defineComponent, render, html } from '../lib/ui.mjs';
 
-const html = htm.bind(h);
-
-function render(el, buildHtml) {
-  const fx = () => {
-    while (el.firstChild) {
-      el.removeChild(el.firstChild);
-    }
-
-    const dom = buildHtml.call(buildHtml);
-    el.append(dom);
+const DisplaySum = defineComponent(({ a, b }) => {
+  return () => {
+    return html`<span style="font-weight: 600;">${a + b}</span>`;
   };
-  watchEffect(fx);
-}
+});
 
-function DisplaySum(a, b) {
-  return () => html`<span style="font-weight: 600;">${a + b}</span>`;
-}
-
-function App() {
-  const a = shallowRef(0);
-  const b = shallowRef(0);
+const App = defineComponent(() => {
+  const [a, setA] = createSignal(0);
+  const [b, setB] = createSignal(0);
 
   function plusA() {
-    a.value += 1;
+    setA(a() + 1);
   }
   function plusB() {
-    b.value += 1;
+    setB(b() + 1);
   }
 
   return () => {
-    const Sum = DisplaySum(a.value, b.value);
+    const Sum = DisplaySum({ a: a(), b: b() });
 
     return html`<div>
-      <div>${a.value} + ${b.value} = ${Sum()}</div>
+      <div>${a()} + ${b()} = ${Sum()}</div>
       <div>
         <button onclick=${() => plusA()}>a++</button>
         <button onclick=${() => plusB()}>b++</button>
       </div>
     </div>`;
   };
-}
+});
 
 const root = document.querySelector('#app');
-render(root, App());
+render(root, App);
