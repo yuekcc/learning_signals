@@ -1,0 +1,53 @@
+{
+  "name": "simple_signals",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "zhanlefeng",
+  "license": "MIT",
+  "prettier": {
+    "arrowParens": "avoid",
+    "endOfLine": "auto",
+    "printWidth": 120,
+    "quoteProps": "consistent",
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2022": true,
+      "commonjs": true,
+      "browser": true,
+      "node": true,
+      "worker": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "v18",
+    "eslint": "8.36.0",
+    "eslint-config-prettier": "8.7.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.8.4",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "htm": "^3.1.1",
+    "hyperscript": "^2.0.2"
+  }
+}
