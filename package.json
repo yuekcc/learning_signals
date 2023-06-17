@@ -13,7 +13,7 @@
   "prettier": {
     "arrowParens": "avoid",
     "endOfLine": "auto",
-    "printWidth": 120,
+    "printWidth": 160,
     "quoteProps": "consistent",
     "semi": true,
     "singleQuote": true,
@@ -29,7 +29,10 @@
       "mocha": true
     },
     "parserOptions": {
-      "sourceType": "module"
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
     },
     "plugins": [
       "prettier"
@@ -49,6 +52,8 @@
   },
   "dependencies": {
     "htm": "^3.1.1",
-    "hyperscript": "^2.0.2"
+    "hyperscript": "^2.0.2",
+    "lodash.uniqueid": "^4.0.1",
+    "morphdom": "^2.7.0"
   }
 }
